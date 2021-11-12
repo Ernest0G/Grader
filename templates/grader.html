@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body onload="displayAllStudents()">
+
+    <div class="row">
+        <div class="column-left">
+            <h1><u>Grader Options:</u></h1>
+            <div class="row">
+                <form onsubmit="return false" >
+                    <div class="row"> 
+                        <label>Search For Student Using Name:</label>
+                        <input type="search" class="text-input" id="name-search" placeholder="Name">
+                        <input type="submit" onclick="searchUsingName()" value="Submit">
+                    </div>
+
+                    <div class="row">
+                        <label>Search For Student(s) Using Grade:</label>
+                        <input type="text" class="text-input" id="grade-search" placeholder="Grade">
+                        <input type="submit" onclick="searchUsingGrade()" value="Submit">
+                    </div>
+                    <div class="row">
+                        <label>Add a Student:</label>
+                        <input type="text" class="text-input" id="new-name" placeholder="Name">
+                        <input type="text" class="text-input" id="new-grade" placeholder="Grade">
+                        <input type="submit" onclick="addStudents()" value="Submit">                       
+                    </div>
+                    <div class="row">
+                        <label>Edit a Student's Grade:</label>
+                        <input type="text" class="text-input" id="edit-name" placeholder="Name">
+                        <input type="text" class="text-input" id="edit-grade" placeholder="New Grade">
+                        <input type="submit" onclick="editGrade()" value="Submit">                       
+                    </div>
+                    <div class="row">  
+                        <label>Delete Grade for Student:</label>
+                        <input type="text" class="text-input" id="grade-delete" placeholder="Name">
+                        <input type="submit" onclick="deleteGrade()" value="Submit"> 
+                    </div>
+                    <div class="row">  
+                        <label>Delete Student:</label>
+                        <input type="text" class="text-input" id="student-delete" placeholder="Name">
+                        <input type="submit" onclick="deleteStudent()" id="student-delete">
+                    </div>
+                    <div class="row">
+                        <label>Display All Students:</label>
+                        <input type="button" class="option-buttons" onclick="displayAllStudents()" id="load-all" >
+                    </div>
+                    <div class="row">
+                        <label>Clear Table:</label>
+                        <input type="button" class="option-buttons" onclick="clearTable()" id="clear-table">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="column-content" >
+            <table class="students" id="students-table">
+                <tr>
+                    <th onclick="sortTable(0)">Name</th>
+                    <th onclick="sortTable(1)">Grade</th>
+                </tr>
+                
+            </table>
+        </div>
+      </div>
+
+</body>
+    <script src="{{ url_for('static',filename='javascript/grader.js') }}"></script>
+</html>

@@ -1,0 +1,77 @@
+html {
+  background-color: beige;
+  scroll-behavior: smooth;
+  position: absolute;
+  font-family: Verdana, sans-serif;
+}
+
+.column-left {
+  float: left;
+  text-align: center;
+  width: 20%;
+  height: auto;
+  position: fixed;
+  border-radius: 12px;
+  background-color: rgb(166, 230, 219);
+}
+
+.column-content {
+  float: right;
+  width: 79%;
+  height: auto;
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  margin-left: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.row {
+  text-align: left;
+  margin-left: 5px;
+  margin-bottom: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.text-input {
+  width: 90%;
+}
+
+.option-buttons {
+  width: 10%;
+  height: 20%;
+  margin-top: 5px;
+  margin-right: 25px;
+  float: right;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.students {
+  border-collapse: collapse;
+}
+
+th {
+  background-color: rgb(166, 230, 219);
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  width: 100%;
+}
+
+td {
+  border: 1px solid rgb(0, 0, 0);
+  width: 10%;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #e3eef0;
+}
