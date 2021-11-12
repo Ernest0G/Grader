@@ -31,7 +31,7 @@ def getStudents():
     return jsonify(studentsList)
 
 
-@app.route('/grades/<nameSearch>', methods=['GET'], endpoint='studentFindWithName')
+@app.route('/grades/search/name/<nameSearch>', methods=['GET'], endpoint='studentFindWithName')
 def getStudentByName(nameSearch):
     studentsAll = students.query.with_entities(
         students.name, students.grade).filter_by(name=nameSearch)
@@ -41,7 +41,7 @@ def getStudentByName(nameSearch):
     return jsonify(studentFound)
 
 
-@app.route('/grades/<gradeSearch>', methods=['GET'], endpoint='studentFindWithGrade')
+@app.route('/grades/search/grade/<gradeSearch>', methods=['GET'], endpoint='studentFindWithGrade')
 def getStudentByGrade(gradeSearch):
     studentsAll = students.query.with_entities(
         students.name, students.grade).filter_by(grade=gradeSearch)
@@ -97,6 +97,20 @@ def deleteStudentGrade():
         students.name, students.grade).filter_by(name=key)
 
     student.grade = ' '
+
+    db.session.commit()
+    return '', 204
+
+@app.route('/grades/delete', methods=['POST'], endpoint='studentDelete')
+def deleteStudent():
+    NewStudent = {}
+    NewStudent.update(request.get_json())
+
+    for i in NewStudent:
+        key = i
+
+    students.query.with_entities(
+        students.name, students.grade).filter_by(name=key).delete()
 
     db.session.commit()
     return '', 204

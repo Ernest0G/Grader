@@ -76,7 +76,7 @@ function searchUsingName(){
     student = nameSearched;
 
     var xhttp = new XMLHttpRequest();
-    url = "http://localhost:5000/grades"+ "/" + nameSearched;
+    url = "http://localhost:5000/grades"+ "/search/name/" + nameSearched;
     xhttp.open("GET", url, true);
     xhttp.send(JSON.stringify(student));
     xhttp.onload = function() {
@@ -113,7 +113,7 @@ function searchUsingGrade(){
 
     student = gradeSearched;
     var xhttp = new XMLHttpRequest();
-    url = "http://localhost:5000/grades"+ "/" + gradeSearched;
+    url = "http://localhost:5000/grades"+ "/search/grade/" + gradeSearched;
     xhttp.open("GET", url, true);
     xhttp.send(JSON.stringify(student));
     xhttp.onload = function() {
@@ -144,16 +144,16 @@ function searchUsingGrade(){
 }
 
 function deleteStudent(){
-    let nameSearched = document.getElementById("name-search").value;
+    let nameSearched = document.getElementById("student-delete").value;
 
     console.log(nameSearched);
 
-    const student={
-        "name": nameSearched,
-    }
+    let student = {};
+    student[nameSearched] =  ' ';
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "http://localhost:5000", true);
+    xhttp.open("POST", "http://localhost:5000/grades/delete", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(JSON.stringify(nameSearched));
     xhttp.onload = function() {
 
